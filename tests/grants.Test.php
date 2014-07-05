@@ -11,7 +11,7 @@
 
     require_once( __DIR__ . DIRECTORY_SEPARATOR . 'bootstrap.php' );
 
-    class TestGrants extends UnitTestCase
+    class TestGrants extends PHPUnit_Framework_TestCase
     {
         function testGrantsSetGet()
         {
