@@ -56,7 +56,7 @@ class GrantsTree
 
     public function setUserGrants($grants = null)
     {
-        if ( isset( $grants ) ) {
+        if (isset( $grants )) {
             $this->tree->nodeValue['user.'.$this->user ] = ' ' . trim( $grants ) . ' ';
         } else {
             unset( $this->tree->nodeValue['user.'.$this->user ] );
@@ -65,7 +65,7 @@ class GrantsTree
 
     public function setGroupGrants($group, $grants = null)
     {
-        if ( isset( $grants ) ) {
+        if (isset( $grants )) {
             $this->tree->nodeValue['group.'.$group ] = ' ' . trim( $grants ) . ' ';
         } else {
             unset( $this->tree->nodeValue['group.'.$group ] );
@@ -76,13 +76,12 @@ class GrantsTree
     {
         // uses strpos since it is twice as fast as preg_match for the most common cases
         $grants = $this->fetchGrants();
-        if ( strpos( $grants, $grant.' ' ) === false ) { // exit early if no possible match is found
-
+        if (strpos( $grants, $grant.' ' ) === false) { // exit early if no possible match is found
             return false;
         }
 
-        return ( strpos( $grants, ' '.$grant.' ')!==false
-            || strpos( $grants, ' ='.$grant.' ')!==false );
+        return ( strpos( $grants, ' '.$grant.' ') !== false
+            || strpos( $grants, ' ='.$grant.' ') !== false );
     }
 
     private function fetchGrants()
@@ -92,7 +91,7 @@ class GrantsTree
         $grants = (string) \arc\tree::dive(
             $this->tree,
             function ($node) use ($user) {
-                if ( isset( $node->nodeValue['user.'.$user] ) ) {
+                if (isset( $node->nodeValue['user.'.$user] )) {
                     return $node->nodeValue['user.'.$user];
                 }
             },
@@ -106,7 +105,7 @@ class GrantsTree
                     }
                     $user = false;
                     foreach ($groups as $group) {
-                        if ( isset( $node->nodeValue[ 'group.'.$group ] ) ) {
+                        if (isset( $node->nodeValue[ 'group.'.$group ] )) {
                             $grants .= $node->nodeValue['group.'.$group ];
                         }
                     }
@@ -117,5 +116,4 @@ class GrantsTree
 
         return $grants;
     }
-
 }

@@ -49,5 +49,4 @@ class grants
     {
         return self::getGrantsTree()->ls();
     }
-
 }
