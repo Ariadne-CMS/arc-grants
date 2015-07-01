@@ -1,7 +1,7 @@
 {
 	"name": "arc/grants",
 	"type": "library",
-	"description": "Ariadne Component Library: Cache Component",
+	"description": "Ariadne Component Library: user and group rights management Component",
 	"keywords": ["component","components"],
 	"homepage": "https://github.com/Ariadne-CMS/arc/wiki",
 	"license": "MIT",
