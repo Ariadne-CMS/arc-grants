@@ -15,21 +15,21 @@
     {
         function testGrantsSetGet()
         {
-            $testGrants = \arc\grants::getGrantsTree()->switchUser('test');
-            $testGrants->setUserGrants('read =add >edit >delete');
-            $this->assertTrue( $testGrants->check('read') );
-            $this->assertTrue( $testGrants->check('add') );
-            $this->assertFalse( $testGrants->check('edit') );
-            $this->assertFalse( $testGrants->check('foo') );
+            \arc\grants::switchUser('test')->setUserGrants('read =add >edit >delete');
+            $this->assertTrue( \arc\grants::check('read') );
+            $this->assertTrue( \arc\grants::check('add') );
+            $this->assertFalse( \arc\grants::check('edit') );
+            $this->assertFalse( \arc\grants::check('foo') );
         }
 
         function testGrantsOnPath()
         {
-            $testGrants = \arc\grants::getGrantsTree()->switchUser('test');
-            $testGrants->setUserGrants('read =add >edit >delete');
-            $grants = $testGrants->cd('/test/');
-            $this->assertTrue( $grants->check('read') );
-            $this->assertFalse( $grants->check('add') );
-            $this->assertTrue( $grants->check('edit') );
+            //\arc\grants::switchUser('test')->setUserGrants('read =add >edit >delete');
+            \arc\grants::cd('/test/');
+            $this->assertTrue( \arc\grants::check('read') );
+            $this->assertFalse( \arc\grants::check('add') );
+            $this->assertTrue( \arc\grants::check('edit') );
         }
+
+
     }
